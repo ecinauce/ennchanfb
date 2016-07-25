@@ -1,25 +1,23 @@
 <html>
-<head>
-</head>
+<title>Penisbutter and Jerky</title>
 <body>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : 'your-app-id',
       xfbml      : true,
-      version    : 'v2.6'
+      version    : 'v2.7'
+    });
+  
+	  FB.getLoginStatus(function(response) {
+	  if (response.status === 'connected') {
+		console.log('Logged in.');
+	  }
+	  else {
+		FB.login();
+	  }
     });
   };
-  
-  function myFacebookLogin() {
-    FB.login(function(){}, {scope: 'publish_actions'});
-	}
-  
-  FB,ui(
-  {
-    method: 'share',
-	href: 'https://developers.facebook.com/docs/'},
-	function(response){});
 
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -29,7 +27,15 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-<p>In this exercise, we try to make a facebook app with our programming power. So here goes...</p>
+<p>Penisbutter and Jerky</p>
+
+<script>
+// Only works after `FB.init` is called
+function myFacebookLogin() {
+  FB.login(function(){}, {scope: 'publish_actions'});
+}
+</script>
 <button onclick="myFacebookLogin()">Login with Facebook</button>
 
 </body>
+</html>
