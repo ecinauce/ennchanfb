@@ -58,6 +58,6 @@ def send_message(recipient_id, response):
 
 if __name__ == "__main__":
   #Deployment script
-  #application.run(host='0.0.0.0', port=8080)
+  application.run(host='0.0.0.0', port=8080)
   #Development script
-  application.run(host='localhost', port=80, debug=True)
+  #application.run(host='localhost', port=80, debug=True)
