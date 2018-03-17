@@ -27,7 +27,7 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    response_sent_text = get_message()
+                    response_sent_text = get_message(message['message']['nlp'])
                     send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
@@ -45,10 +45,17 @@ def verify_fb_token(token_sent):
 
 
 #chooses a random message to send to the user
-def get_message():
+def get_message(entities):
+    setEntity = []
+    stringEntity = ""
+    
     sample_responses = ["You're supposed to be working.", "How are your friends doing?", "Have you dealt with your problems yet?", "Please, do go on. I'm listening."]
+    for key, val in entities:
+      setEntity.append(key)
+    for entry in setEntity:
+      stringEntity = stringEntity + ", "
     # return selected item to the user
-    return random.choice(sample_responses)
+    return random.choice("I think you said something on the lines of "+ stringEntity+ ", or maybe something else. " +sample_responses)
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
