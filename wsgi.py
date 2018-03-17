@@ -50,7 +50,7 @@ def get_message(entities):
     stringEntity = ""
     
     sample_responses = ["You're supposed to be working.", "How are your friends doing?", "Have you dealt with your problems yet?", "Please, do go on. I'm listening."]
-    for key, val in entities.iter():
+    for key, val in entities.items():
       setEntity.append(key)
     for entry in setEntity:
       stringEntity = stringEntity + ", "
