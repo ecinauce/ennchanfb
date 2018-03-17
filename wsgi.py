@@ -53,7 +53,7 @@ def get_message(entities):
     for key, val in entities.items():
       setEntity.append(key)
     for entry in setEntity:
-      stringEntity = entry + ", "
+      stringEntity = str(entry) + ", "
     # return selected item to the user
     return random.choice("I think you said something on the lines of "+ stringEntity+ ", or maybe something else. " +sample_responses)
 
