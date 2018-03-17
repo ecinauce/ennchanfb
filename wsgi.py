@@ -27,7 +27,7 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    response_sent_text = get_message(message['message']['nlp'])
+                    response_sent_text = get_message(message['message']['nlp']['entities'])
                     send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
@@ -51,8 +51,6 @@ def get_message(entities):
     
     sample_responses = ["You're supposed to be working.", "How are your friends doing?", "Have you dealt with your problems yet?", "Please, do go on. I'm listening."]
     for key, val in entities.items():
-      print(entities)
-      print(entities.items())
       setEntity.append(key)
     for entry in setEntity:
       stringEntity = entry + ", "
