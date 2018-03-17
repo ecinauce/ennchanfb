@@ -51,11 +51,13 @@ def get_message(entities):
     
     sample_responses = ["You're supposed to be working.", "How are your friends doing?", "Have you dealt with your problems yet?", "Please, do go on. I'm listening."]
     for key, val in entities.items():
+      print(entities)
+      print(entities.items())
       setEntity.append(key)
     for entry in setEntity:
-      stringEntity = str(entry) + ", "
+      stringEntity = entry + ", "
     # return selected item to the user
-    return "I think you said something on the lines of "+ stringEntity+ ", or maybe something else. " + random.choice(sample_responses)
+    return "I think you said something on the lines of "+ stringEntity+ "or maybe something else. " + random.choice(sample_responses)
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
